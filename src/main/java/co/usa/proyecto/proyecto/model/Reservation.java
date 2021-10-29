@@ -30,12 +30,12 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties("reservation")
     private Score score;
 
-    public Integer getId() {
+    public Integer getIdReservation() {
         return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.idReservation = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
