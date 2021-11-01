@@ -1,6 +1,7 @@
 package co.usa.proyecto.proyecto.web;
 
 import co.usa.proyecto.proyecto.model.Category;
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,17 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category c){
         return categoryService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category update(@RequestBody Category c){
+        return categoryService.update(c);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteCategory(@PathVariable("id") int id){
+        return categoryService.delete(id);
     }
 }

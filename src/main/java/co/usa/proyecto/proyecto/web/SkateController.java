@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.web;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Skate;
 import co.usa.proyecto.proyecto.service.SkateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class SkateController {
     @ResponseStatus(HttpStatus.CREATED)
     public Skate save(@RequestBody Skate c){
         return skateService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Skate update(@RequestBody Skate c){
+        return skateService.update(c);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteSkate(@PathVariable("id") int id){
+        return skateService.delete(id);
     }
 }

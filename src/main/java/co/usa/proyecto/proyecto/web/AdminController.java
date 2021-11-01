@@ -1,6 +1,7 @@
 package co.usa.proyecto.proyecto.web;
 
 import co.usa.proyecto.proyecto.model.Admin;
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,17 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public Admin save(@RequestBody Admin c){
         return adminService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Admin update(@RequestBody Admin c){
+        return adminService.update(c);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteAdmin(@PathVariable("id") int id){
+        return adminService.delete(id);
     }
 }

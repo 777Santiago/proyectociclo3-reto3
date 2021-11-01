@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.web;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Reservation;
 import co.usa.proyecto.proyecto.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation c){
         return reservationService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation c){
+        return reservationService.update(c);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteReservation(@PathVariable("id") int id){
+        return reservationService.delete(id);
     }
 }

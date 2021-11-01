@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.web;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Score;
 import co.usa.proyecto.proyecto.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class ScoreController {
     @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score c){
         return scoreService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Score update(@RequestBody Score c){
+        return scoreService.update(c);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteScore(@PathVariable("id") int id){
+        return scoreService.delete(id);
     }
 }
