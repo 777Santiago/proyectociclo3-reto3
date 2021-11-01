@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.repository;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Reservation;
 import co.usa.proyecto.proyecto.repository.crud.ReservationCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class ReservationRepository {
 
     public Reservation save(Reservation c){
         return reservationCrudRepository.save(c);
+    }
+
+    public void delete(Reservation c){
+        reservationCrudRepository.delete(c);
     }
 }

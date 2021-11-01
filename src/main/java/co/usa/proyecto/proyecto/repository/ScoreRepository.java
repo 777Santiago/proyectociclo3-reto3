@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.repository;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Score;
 import co.usa.proyecto.proyecto.repository.crud.ScoreCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class ScoreRepository {
 
     public Score save(Score c){
         return scoreCrudRepository.save(c);
+    }
+
+    public void delete(Score c){
+        scoreCrudRepository.delete(c);
     }
 }

@@ -1,6 +1,7 @@
 package co.usa.proyecto.proyecto.repository;
 
 import co.usa.proyecto.proyecto.model.Admin;
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.repository.crud.AdminCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +24,9 @@ public class AdminRepository {
 
     public Admin save(Admin c){
         return adminCrudRepository.save(c);
+    }
+
+    public void delete(Admin c){
+        adminCrudRepository.delete(c);
     }
 }

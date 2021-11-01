@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.service;
 
+import co.usa.proyecto.proyecto.model.Admin;
 import co.usa.proyecto.proyecto.model.Message;
 import co.usa.proyecto.proyecto.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,27 @@ public class MessageService {
                 return c;
             }
         }
+    }
+
+    public Message update(Message c){
+        if(c.getIdMessage()!=null){
+            Optional<Message> caux=messageRepository.getMessage(c.getIdMessage());
+            if (!caux.isEmpty()){
+                if (c.getMessageText()!=null){
+                    caux.get().setMessageText(c.getMessageText());
+                }
+                return messageRepository.save(caux.get());
+            }
+        }
+        return c;
+    }
+
+    public boolean delete(int id){
+        Optional<Message> c=getMessage(id);
+        if(!c.isEmpty()){
+            messageRepository.delete(c.get());
+            return true;
+        }
+        return false;
     }
 }

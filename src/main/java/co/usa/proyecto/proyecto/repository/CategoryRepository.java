@@ -1,6 +1,8 @@
 package co.usa.proyecto.proyecto.repository;
 
+import co.usa.proyecto.proyecto.model.Admin;
 import co.usa.proyecto.proyecto.model.Category;
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.repository.crud.CategoryCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +25,9 @@ public class CategoryRepository {
 
     public Category save(Category c){
         return categoryCrudRepository.save(c);
+    }
+
+    public void delete(Category c){
+        categoryCrudRepository.delete(c);
     }
 }

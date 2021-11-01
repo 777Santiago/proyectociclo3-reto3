@@ -35,18 +35,21 @@ public class ClientService {
         }
     }
 
-/*    public Client update(Client c){
+    public Client update(Client c){
         if(c.getIdClient()!=null){
-            Optional<Client>caux=clientRepository.getClient(c.getIdClient());
-            if(!caux.isEmpty()){
-                if(c.getName()!=null){
+            Optional<Client> caux=clientRepository.getClient(c.getIdClient());
+            if (!caux.isEmpty()){
+                if (c.getEmail()!=null){
+                    caux.get().setEmail(c.getEmail());
+                }
+                if (c.getPassword()!=null){
+                    caux.get().setPassword(c.getPassword());
+                }
+                if (c.getName()!=null){
                     caux.get().setName(c.getName());
                 }
-                if(c.getDescription()!=null){
-                    caux.get().setDescription(c.getDescription());
-                }
-                if(c.getPrice()!=null){
-                    caux.get().setPrice(c.getPrice());
+                if (c.getAge()!=null){
+                    caux.get().setAge(c.getAge());
                 }
                 return clientRepository.save(caux.get());
             }
@@ -55,11 +58,11 @@ public class ClientService {
     }
 
     public boolean delete(int id){
-        Optional<Client> caux=getClient(id);
-        if(!caux.isEmpty()){
-            clientRepository.delete(caux.get());
+        Optional<Client> c=getClient(id);
+        if(!c.isEmpty()){
+            clientRepository.delete(c.get());
             return true;
         }
         return false;
-    }*/
+    }
 }

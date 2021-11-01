@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.repository;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Skate;
 import co.usa.proyecto.proyecto.repository.crud.SkateCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class SkateRepository {
 
     public Skate save(Skate c){
         return skateCrudRepository.save(c);
+    }
+
+    public void delete(Skate c){
+        skateCrudRepository.delete(c);
     }
 }

@@ -1,5 +1,6 @@
 package co.usa.proyecto.proyecto.repository;
 
+import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Message;
 import co.usa.proyecto.proyecto.repository.crud.MessageCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class MessageRepository {
 
     public Message save(Message c){
         return messageCrudRepository.save(c);
+    }
+
+    public void delete(Message c){
+        messageCrudRepository.delete(c);
     }
 }
