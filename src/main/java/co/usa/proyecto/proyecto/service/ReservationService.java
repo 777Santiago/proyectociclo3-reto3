@@ -2,10 +2,16 @@ package co.usa.proyecto.proyecto.service;
 
 import co.usa.proyecto.proyecto.model.Admin;
 import co.usa.proyecto.proyecto.model.Reservation;
+import co.usa.proyecto.proyecto.model.custom.CountClient;
+import co.usa.proyecto.proyecto.model.custom.DescriptionAmount;
 import co.usa.proyecto.proyecto.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +65,33 @@ public class ReservationService {
             return true;
         }
         return false;
+    }
+
+    public List<CountClient> getTopClient(){
+        return reservationRepository.getTopClient();
+    }
+
+    public DescriptionAmount getStatusReport(){
+        List<Reservation> completed=reservationRepository.getReservationByDescription("completed");
+        List<Reservation> cancelled=reservationRepository.getReservationByDescription("cancelled");
+
+        DescriptionAmount descAmt= new DescriptionAmount((completed.size()), cancelled.size());
+        return descAmt;
+    }
+
+    public List<Reservation> getReservationPeriod(String d1, String d2){
+        SimpleDateFormat parser=new SimpleDateFormat( "yyyy-MM-dd");
+        Date dateOne=new Date();
+        Date dateTwo=new Date();
+        try{
+            dateOne=parser.parse(d1);
+            dateTwo=parser.parse(d2);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        if (dateOne.before(dateTwo)){
+            return reservationRepository.getReservationPeriod(dateOne,dateTwo);
+        }
+        return new ArrayList<>();
     }
 }

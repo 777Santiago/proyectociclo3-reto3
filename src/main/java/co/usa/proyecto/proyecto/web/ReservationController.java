@@ -2,6 +2,8 @@ package co.usa.proyecto.proyecto.web;
 
 import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Reservation;
+import co.usa.proyecto.proyecto.model.custom.CountClient;
+import co.usa.proyecto.proyecto.model.custom.DescriptionAmount;
 import co.usa.proyecto.proyecto.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,5 +46,20 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteReservation(@PathVariable("id") int id){
         return reservationService.delete(id);
+    }
+
+    @GetMapping("/report-status")
+    public DescriptionAmount getReservationDescriptionStatus(){
+        return reservationService.getStatusReport();
+    }
+
+    @GetMapping("/report-client")
+    public List<CountClient> getCountClient(){
+        return reservationService.getTopClient();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getDatesReport(@PathVariable("dateOne")String d1, @PathVariable("dateTwo")String d2){
+        return reservationService.getReservationPeriod(d1, d2);
     }
 }
