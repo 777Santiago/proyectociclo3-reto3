@@ -1,6 +1,5 @@
 package co.usa.proyecto.proyecto.service;
 
-import co.usa.proyecto.proyecto.model.Admin;
 import co.usa.proyecto.proyecto.model.Reservation;
 import co.usa.proyecto.proyecto.model.custom.CountClient;
 import co.usa.proyecto.proyecto.model.custom.DescriptionAmount;
@@ -72,8 +71,8 @@ public class ReservationService {
     }
 
     public DescriptionAmount getStatusReport(){
-        List<Reservation> completed=reservationRepository.getReservationByDescription("completed");
-        List<Reservation> cancelled=reservationRepository.getReservationByDescription("cancelled");
+        List<Reservation> completed=reservationRepository.getReservationByStatus("completed");
+        List<Reservation> cancelled=reservationRepository.getReservationByStatus("cancelled");
 
         DescriptionAmount descAmt= new DescriptionAmount((completed.size()), cancelled.size());
         return descAmt;

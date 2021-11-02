@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Repository
 public class ReservationRepository {
+
     @Autowired
     private ReservationCrudRepository reservationCrudRepository;
 
@@ -33,8 +34,8 @@ public class ReservationRepository {
         reservationCrudRepository.delete(c);
     }
 
-    public List<Reservation> getReservationByDescription(String description){
-        return reservationCrudRepository.findAllByDescription(description);
+    public List<Reservation> getReservationByStatus(String status){
+        return reservationCrudRepository.findAllByStatus(status);
     }
 
     public List<Reservation> getReservationPeriod(Date dateOne, Date dateTwo){
@@ -42,10 +43,11 @@ public class ReservationRepository {
     }
 
     public List<CountClient> getTopClient() {
-        List<CountClient> res = new ArrayList<>();
-        List<Object[]> report = reservationCrudRepository.countTotalReservationByClient();
-        for (int i = 0; i < report.size(); i++) {
-            res.add(new CountClient((Long) report.get(i)[1], (Client) report.get(i)[0]));
+        List<CountClient> res=new ArrayList<>();
+
+        List<Object[]> report=reservationCrudRepository.countTotalReservationByClient();
+        for (int i=0;i<report.size();i++) {
+            res.add(new CountClient((Long) report.get(i)[1],(Client)report.get(i)[0]));
         }
         return res;
     }

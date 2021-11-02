@@ -1,6 +1,5 @@
 package co.usa.proyecto.proyecto.web;
 
-import co.usa.proyecto.proyecto.model.Client;
 import co.usa.proyecto.proyecto.model.Reservation;
 import co.usa.proyecto.proyecto.model.custom.CountClient;
 import co.usa.proyecto.proyecto.model.custom.DescriptionAmount;
