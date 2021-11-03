@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name="Reservation")
@@ -23,10 +22,11 @@ public class Reservation implements Serializable {
     private Skate skate;
 
     @ManyToOne
-    @JsonIgnoreProperties({"messages,reservations"})
+    @JoinColumn(name="clientId")
+    @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
 
-    @OneToOne
+    @OneToOne (cascade = {CascadeType.REMOVE},mappedBy="reservation")
     @JsonIgnoreProperties("reservation")
     private Score score;
 
