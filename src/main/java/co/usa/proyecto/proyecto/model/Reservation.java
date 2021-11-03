@@ -24,6 +24,7 @@ public class Reservation implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("messages,reservations")
+    @JoinColumn(name="clientId")
     private Client client;
 
     @OneToOne
